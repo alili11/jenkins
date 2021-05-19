@@ -1,3 +1,4 @@
 #!/bin/bash
-cp helloWorld.class .
+cp helloWorld.class ./app
+cd ./app
 java helloWorld
