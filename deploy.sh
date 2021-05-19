@@ -1,6 +1,5 @@
 #!/bin/bash
-pwd
-mkdir -p app/
-cp helloWorld.class app/
-cd app
+sudo mkdir -p /app
+sudo cp helloWorld.class /app
+sudo cd /app
 java helloWorld
