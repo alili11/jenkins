@@ -12,3 +12,25 @@
     - debug:
         var=result_install
 
+    - name: Creation du dossier /docker-app sur la chaine distante
+      file:
+        path: /docker-app
+        state: directory
+        mode: 0777
+        owner: ec2-user
+
+   - name: copy Dockerfile
+      copy:
+        src: ./Dockerfile
+        dest: /root/demo-dockerfile/Dockerfile
+        owner: ec2-user
+        group: ec2-user
+        mode: '0644'
+        
+    - name: build container image
+      docker_image:
+        name: democontainer:v1.0
+        build:
+          path: /root/demo-dockerfile
+          source: build
+        state: present
