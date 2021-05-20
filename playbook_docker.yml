@@ -1,0 +1,14 @@
+---
+- name: Deploy java programm dans un docker
+  hosts: all
+
+  become: yes
+  tasks:
+
+    - name: Installation Docker
+      shell: amazon-linux-extras install -y docker && service docker start && usermod -a -G docker ec2-user
+      register: result_install     #On prend tout ce qui est stdout et on le met dans la variable result_install
+
+    - debug:
+        var=result_install
+
